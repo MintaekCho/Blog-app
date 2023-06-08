@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <section className="">
       <Profile />
-      {/* @ts-expect-error Server Component */}
       <Posts />
     </section>
   );
