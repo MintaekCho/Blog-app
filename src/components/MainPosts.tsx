@@ -18,7 +18,7 @@ export default function MainPosts({ posts }: { posts: Post[] }) {
 
   return (
     <section className="mt-8 flex flex-col gap-4">
-      <Category setCategory={setCategory} />
+      <Category setCategory={setCategory} selected={category} />
       {activePosts && <GridPosts posts={activePosts} />}
     </section>
   );
