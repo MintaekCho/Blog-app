@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className="w-full flex items-center justify-between p-4">
       <Link href={"/"}>
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold hover:tracking-wide hover:scale-105 ease-in-out duration-300">
           Min&apos;s Blog
         </h1>
       </Link>
