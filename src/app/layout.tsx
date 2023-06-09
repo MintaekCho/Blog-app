@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="flex flex-col mx-auto max-w-screen-2xl ">
         <Header />
         <main className="grow">{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );

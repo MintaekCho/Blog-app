@@ -4,7 +4,7 @@ import YouMayLikePost from "@/components/YouMayLikePost";
 
 export default function Home() {
   return (
-    <section className="">
+    <section className="p-4">
       <Profile />
       <FeturedPosts />
       <YouMayLikePost />
