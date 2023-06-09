@@ -14,7 +14,7 @@ export default function MainPosts({ posts }: { posts: Post[] }) {
     } else {
       setActivePosts(posts.filter((post) => post.category === category));
     }
-  }, [category]);
+  }, [category, posts]);
 
   return (
     <section className="mt-8 flex flex-col gap-4">
