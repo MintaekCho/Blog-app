@@ -10,7 +10,11 @@ export type Post = {
   featured: boolean;
 };
 
-type PostContent = Post & { content: string };
+export type PostContent = Post & {
+  content: string;
+  next: Post | null;
+  prev: Post | null;
+};
 
 export async function getFeaturedPost(): Promise<Post[]> {
   return getAllPosts().then((posts) => posts.filter((post) => post.featured));
@@ -39,11 +43,15 @@ export async function getPostContent({
     "posts",
     `${slug}.md`
   );
-  const metedata = await getAllPosts().then((posts) =>
-    posts.find((post) => post.path === slug)
-  );
+  const posts = await getAllPosts();
+  const metedata = posts.find((post) => post.path === slug);
+
   if (!metedata)
     throw new Error(`${slug}에 해당하는 포스트가 존재하지 않습니다.`);
+
+  const index = posts.indexOf(metedata);
+  const next = index > 0 ? posts[index - 1] : null;
+  const prev = index < posts.length - 1 ? posts[index + 1] : null;
   const content = await readFile(filePath, "utf-8");
-  return { ...metedata, content };
+  return { ...metedata, content, next, prev };
 }
