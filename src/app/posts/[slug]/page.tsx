@@ -10,6 +10,16 @@ type Props = {
   };
 };
 
+export async function generateMetadata({ params: { slug } }: Props) {
+  const { title, description } = await getPostContent({
+    slug,
+  });
+  return {
+    title: `조민택 블로그 | ${title}`,
+    description: description,
+  };
+}
+
 export default async function PostDetailPage({ params: { slug } }: Props) {
   const post = await getPostContent({
     slug,
