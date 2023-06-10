@@ -1,4 +1,5 @@
 "use client";
+import { sendEmail } from "@/api/sendEmail";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import SuccessBanner, { Banner } from "./SuccessBanner";
 
@@ -28,32 +29,25 @@ export default function EmailForm() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formdata);
-    try {
-      fetch("http://localhost:3001/api/email", {
-        method: "POST",
-      }).then((res) => {
-        console.log(res);
-        if (res.status === 200) {
-          setBanner((prev) => ({
-            ...prev,
-            message: "이메일을 성공적으로 보냈습니다.",
-          }));
-          setTimeout(() => {
-            setBanner((prev) => ({ ...prev, message: "" }));
-          }, 3000);
-        }
+    sendEmail(formdata)
+      .then((res) => {
+        setBanner((prev) => ({
+          ...prev,
+          message: "이메일을 성공적으로 보냈습니다.",
+        }));
+      })
+      .catch((e) => {
+        setBanner((prev) => ({
+          ...prev,
+          state: "error",
+          message: "이메일을 전송에 실패하였습니다.",
+        }));
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setBanner((prev) => ({ ...prev, state: "success", message: "" }));
+        }, 3000);
       });
-    } catch (e) {
-      console.log(e);
-      setBanner((prev) => ({
-        ...prev,
-        state: "error",
-        message: "이메일을 전송에 실패하였습니다.",
-      }));
-      setTimeout(() => {
-        setBanner((prev) => ({ ...prev, state: "success", message: "" }));
-      }, 3000);
-    }
   };
 
   return (
