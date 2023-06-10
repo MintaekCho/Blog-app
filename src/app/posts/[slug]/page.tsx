@@ -15,8 +15,8 @@ export async function generateMetadata({ params: { slug } }: Props) {
     slug,
   });
   return {
-    title: `조민택 블로그 | ${title}`,
-    description: description,
+    title,
+    description,
   };
 }
 

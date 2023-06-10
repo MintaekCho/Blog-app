@@ -1,13 +1,11 @@
 import EmailForm from "@/components/EmailForm";
+import { Metadata } from "next";
 import React from "react";
 
-export async function generateMetadata() {
-  return {
-    title:
-      "프론트엔드 개발자 | 조민택 블로그 | mintaek5555@gmail.com | Contact Me",
-    description: "프론트엔드 개발자 조민택입니다.",
+export const metadata: Metadata = {
+    title: 'Contact Me',
+    description: "프론트엔드 개발자 조민택에게 메일 보내기",
   };
-}
 
 export default function ContactPage() {
   return (

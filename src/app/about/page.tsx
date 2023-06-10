@@ -5,13 +5,12 @@ import { AiOutlineMail } from "react-icons/ai";
 import { HiOutlinePhone } from "react-icons/hi";
 import { FaAddressBook } from "react-icons/fa";
 import AboutProfile from "@/components/AboutProfile";
+import { Metadata } from "next";
 
-export async function generateMetadata() {
-  return {
-    title: "프론트엔드 개발자 | 조민택 | 포트폴리오 | 블로그",
-    description: "프론트엔드 개발자 조민택입니다.",
+export const metadata: Metadata = {
+    title: 'About Me',
+    description: "프론트엔드 개발자 조민택 소개 페이지",
   };
-}
 
 export default function AboutPage() {
   return (
