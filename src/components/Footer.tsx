@@ -7,14 +7,14 @@ export default function Footer() {
     <footer className="w-full flex flex-col items-center justify-center gap-20 mt-10 p-8">
       <div className="flex gap-8">
         <div className="text-5xl hover:scale-110 ease-in-out duration-300">
-          <Link href={""}>
+          <a href={""} target='_blank'>
             <BsInstagram />
-          </Link>
+          </a>
         </div>
         <div className="text-5xl hover:scale-110 ease-in-out duration-300">
-          <Link href={"https://github.com/MintaekCho"}>
+          <a href={"https://github.com/MintaekCho"} target='_blank'>
             <BsGithub />
-          </Link>
+          </a>
         </div>
       </div>
 
