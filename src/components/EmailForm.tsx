@@ -17,9 +17,10 @@ export default function EmailForm() {
   });
 
   const [banner, setBanner] = useState<Banner>({
-    state: "success",
+    state: null,
     message: "",
   });
+
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -28,11 +29,16 @@ export default function EmailForm() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formdata);
+    setBanner((prev) => ({
+        ...prev,
+        state: 'loading',
+        message: '이메일 보내는중...'
+    }))
     sendEmail(formdata)
       .then((res) => {
         setBanner((prev) => ({
           ...prev,
+          state: 'success',
           message: "이메일을 성공적으로 보냈습니다.",
         }));
       })
