@@ -9,9 +9,12 @@ const sans = Open_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
     default: "조민택 블로그",
-    template: '조민택 블로그 | %s'
+    template: "조민택 블로그 | %s",
   },
   description: "프론트엔드 개발자 조민택입니다.",
+  icons: {
+    icon: '/favicon.ico'
+  }
 };
 
 export default function RootLayout({
