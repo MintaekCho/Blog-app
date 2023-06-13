@@ -24,8 +24,9 @@ export default function Header() {
       </Link>
 
       <nav className="hidden sm:flex gap-4 text-xs sm:text-sm md:text-md  ">
-        {categorys.map((category) => (
+        {categorys.map((category, i) => (
           <Link
+            key={i}
             className="hover:scale-105  hover:text-white hover:bg-black px-2 py-1 rounded-full"
             href={category.href}
           >
